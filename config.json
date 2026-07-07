@@ -1,0 +1,74 @@
+{
+  "log": {
+    "loglevel": "info",
+    "access": "",
+    "error": ""
+  },
+  "inbounds": [
+    {
+      "port": 1080,
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "userLevel": 8
+      },
+      "tag": "socks-in"
+    },
+    {
+      "port": 1081,
+      "protocol": "http",
+      "tag": "http-in"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "bogdanserv.online",
+            "port": 443,
+            "users": [
+              {
+                "id": "9cd12394-9f68-4fe4-8886-6fe25b35ce65",
+                "encryptionMethod": "none",
+                "flow": "",
+                "alterId": 0,
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "nc-fns.ertelecom.cloud"
+        },
+        "grpcSettings": {
+          "serviceName": "sg"
+        }
+      },
+      "tag": "proxy"
+    },
+    {
+      "protocol": "freedom",
+      "tag": "direct"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "IPOnDemand",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "socks-in",
+          "http-in"
+        ],
+        "outboundTag": "proxy"
+      }
+    ]
+  }
+}

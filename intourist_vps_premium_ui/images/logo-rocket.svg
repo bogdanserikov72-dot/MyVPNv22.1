@@ -1,0 +1,33 @@
+<svg width="180" height="160" viewBox="0 0 180 160" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="sun" cx="45%" cy="35%" r="65%">
+    <stop offset="0" stop-color="#ffb071"/>
+    <stop offset=".65" stop-color="#ff864a"/>
+    <stop offset="1" stop-color="#e34a18"/>
+  </radialGradient>
+  <linearGradient id="rocket" x1="60" x2="122" y1="20" y2="125">
+    <stop stop-color="#ffffff"/>
+    <stop offset=".55" stop-color="#c9f2ff"/>
+    <stop offset="1" stop-color="#2d8cff"/>
+  </linearGradient>
+  <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+<circle cx="90" cy="78" r="58" fill="url(#sun)" opacity=".95"/>
+<path d="M37 34c11 8 22 5 30-9" fill="none" stroke="#2d8cff" stroke-width="4" stroke-linecap="round"/>
+<circle cx="28" cy="36" r="10" fill="#44c9ff" stroke="#071018" stroke-width="3"/>
+<circle cx="143" cy="43" r="14" fill="#ff9a42" stroke="#071018" stroke-width="3"/>
+<circle cx="138" cy="38" r="2.2" fill="#421605"/><circle cx="148" cy="45" r="2.2" fill="#421605"/><circle cx="137" cy="50" r="2.2" fill="#421605"/>
+<g filter="url(#glow)">
+  <path d="M91 16c-24 22-34 54-29 96h58c5-42-5-74-29-96z" fill="url(#rocket)" stroke="#06101a" stroke-width="4"/>
+  <path d="M91 16c9 26 12 60 8 96h21c5-42-5-74-29-96z" fill="#7ce3ff" opacity=".7"/>
+  <circle cx="91" cy="51" r="13" fill="#ff864a" stroke="#06101a" stroke-width="4"/>
+  <path d="M62 91l-28 25 6-43 22 12z" fill="#2d8cff" stroke="#06101a" stroke-width="4"/>
+  <path d="M120 91l28 25-6-43-22 12z" fill="#2d8cff" stroke="#06101a" stroke-width="4"/>
+  <rect x="72" y="107" width="15" height="30" rx="5" fill="#2d8cff" stroke="#06101a" stroke-width="4"/>
+  <rect x="95" y="107" width="15" height="30" rx="5" fill="#2d8cff" stroke="#06101a" stroke-width="4"/>
+  <path d="M78 137l-8 20M91 137v22M104 137l8 20" stroke="#ff6426" stroke-width="4" stroke-linecap="round"/>
+</g>
+</svg>
