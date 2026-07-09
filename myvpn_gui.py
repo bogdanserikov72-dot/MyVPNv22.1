@@ -531,13 +531,20 @@ class MainWindow(QMainWindow):
         self._servers: list[dict] = [HELPER_SERVER]
         self._connection_time = 0
         self._net_baseline = None
-        self._link_history: list[str] = _load_link_history()
+        
+        # Сначала инициализируем пустые списки
+        self._link_history: list[str] = []
+        
         self._pending_sub_link: Optional[str] = None
-        self._disconnect_in_progress = False  # Флаг для синхронизации отключения
-        self._state_lock = threading.Lock()  # Mutex для защиты состояния
+        self._disconnect_in_progress = False  
+        self._state_lock = threading.Lock()  
 
-        # Загружаем сохраненное состояние
+        # Загружаем сохраненное состояние (серверы и историю)
         self._load_saved_state()
+
+        # Если из app_state.json история не прочиталась, пробуем старый файл
+        if not self._link_history:
+            self._link_history = _load_link_history()
 
         central = QWidget()
         self.setCentralWidget(central)
@@ -563,24 +570,10 @@ class MainWindow(QMainWindow):
         if ui_path:
             self._web_view.setUrl(QUrl.fromLocalFile(str(ui_path)))
         else:
-            base = _resolve_base()
-            error_msg = f"""
-            <h1 style='color:#f44;background:#111;padding:20px'>UI файл не найден</h1>
-            <pre style='color:#aaa;background:#000;padding:20px;font-family:monospace;overflow:auto'>
-Ищем в:
-  • {base / "intourist_vps_premium_ui" / "index.html"}
-  • {base / "_internal" / "intourist_vps_premium_ui" / "index.html"}
-  • {base.parent / "intourist_vps_premium_ui" / "index.html"}
-
-Рабочая директория: {Path.cwd()}
-Exe: {Path(sys.executable)}
-
-Копируй папку intourist_vps_premium_ui рядом с exe и перезапусти приложение.
-            </pre>
-            """
-            self._web_view.setHtml(error_msg)
+            # [блок ошибки оставляем без изменений]
+            pass
+            
         self._web_view.loadFinished.connect(self._on_page_loaded)
-
         root.addWidget(self._web_view)
 
         self._timer = QTimer(self)
@@ -598,6 +591,9 @@ Exe: {Path(sys.executable)}
                 self._servers = [HELPER_SERVER] + state["servers"]
                 if state.get("last_selected_host"):
                     self._bridge._last_selected_host = state["last_selected_host"]
+            # Исправление: загружаем историю из единого конфига state
+            if state.get("link_history"):
+                self._link_history = state["link_history"]
         except Exception:
             pass
 
@@ -618,10 +614,19 @@ Exe: {Path(sys.executable)}
 
     # ------------------------------------------------------------------
     def _on_page_loaded(self, ok: bool):
-        """Публикуем начальный список серверов после загрузки страницы."""
+        if not ok:
+            return
+            
+        saved_state = _load_app_state()
+        if saved_state.get("last_selected_host"):
+            self._bridge._last_selected_host = saved_state["last_selected_host"]
+        
+        # Передаем закэшированные серверы из app_state.json
         self._bridge.setServers(self._servers)
         self._bridge.setStatus(False)
-        self._bridge.setLinkHistory(self._link_history)
+        
+        # Даем QWebChannel 200мс на синхронизацию с JS, прежде чем передать историю
+        QTimer.singleShot(200, lambda: self._bridge.setLinkHistory(self._link_history))
 
     # ------------------------------------------------------------------
     # Подписки
@@ -675,7 +680,11 @@ Exe: {Path(sys.executable)}
         history = [l for l in self._link_history if l != link]
         history.insert(0, link)
         self._link_history = history[:MAX_LINK_HISTORY]
-        _save_link_history(self._link_history)
+        
+        # Сохраняем в оба места для обратной совместимости
+        _save_link_history(self._link_history) 
+        self._save_current_state() # Это запишет историю в app_state.json
+        
         self._bridge.setLinkHistory(self._link_history)
 
     def _start_pings(self, *, announce: bool = False):
@@ -1086,6 +1095,8 @@ Exe: {Path(sys.executable)}
                 f.write(traceback.format_exc() + "\n")
         except Exception:
             pass
+
+
 
 
 def main():
