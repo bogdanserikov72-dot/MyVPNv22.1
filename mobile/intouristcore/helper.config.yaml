@@ -1,0 +1,22 @@
+bridge:
+  url: "wss://d5domo185egeigartq0b.uvah0e6r.apigw.yandexcloud.net/_helper"
+  authToken: "R8vK29xQm7Lp4Nz1"
+  reconnect:
+    initialDelayMs: 1000
+    maxDelayMs: 30000
+    backoffMultiplier: 2
+  pingIntervalMs: 30000
+
+listen:
+  address: "127.0.0.1:1080"
+
+writeCoalescing:
+  enabled: true
+  delayMs: 50
+
+wsApi:
+  mode: "grpc"
+  relay: false
+
+logging:
+  level: "info"

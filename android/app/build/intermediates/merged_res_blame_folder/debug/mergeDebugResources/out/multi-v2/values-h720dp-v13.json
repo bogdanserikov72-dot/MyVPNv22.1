@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.intourist.vpn.app-mergeDebugResources-26:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Halo Wolf\\.gradle\\caches\\8.9\\transforms\\30aea0182b06da4b847967a4f9021238\\transformed\\appcompat-1.6.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}

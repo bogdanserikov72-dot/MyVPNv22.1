@@ -1,0 +1,843 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LCX SchemaVersion="2.0" Name="VSIXInstaller" PsrId="211" xmlns="http://schemas.microsoft.com/locstudio/2004/6/lcx">
+  <OwnedComments>
+    <Cmt Name="RCCX" />
+  </OwnedComments>
+  <Item ItemId=";VSIXInstaller.Resources.resources" ItemType="0" PsrId="211" Leaf="false">
+    <Disp Icon="Expand" Expand="true" Disp="true" LocTbl="false" />
+    <Item ItemId=";Strings" ItemType="0" PsrId="211" Leaf="false">
+      <Disp Icon="Str" Disp="true" LocTbl="false" />
+      <Item ItemId=";AlreadyInstalledExtensionUiMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension is already installed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";AppIdInstallPathDoesNotExist" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[/appidInstallPath was specified but {0} doesn't exist as a file or a directory.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[/appidInstallPath is the name of a argument given to the program. {0} is a user supplied location of an installed product on disk]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";AppIdNameNotSpecified" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[/appidName not specified. When /appidInstallPath is specified you must also specify /appidName, /skuName and /skuVersion.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[/appididName, /appidInstallPath, /skuName and /skuVersion are the names of arguments given to the program.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";AppNameWithNickname" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} ({1})]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";BlockingProcess" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[- {0} (ID {1})]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";BlockingProcessesCouldNotBeEnded" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Failed to end all blocking processes. VSIX Installer will continue to wait until all processes shut down to continue.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";BlockingProcessesExceptionDescription" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following processes need to be shut down before executing extension changes:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";BlockingProcessesExceptionDescriptionWithoutArgs" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[One or more processes need to be shut down before executing extension changes.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";DowngradeFailureHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Revert Failed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";DowngradeFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The revert was not successful for the selected product. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";DowngradeNoOpFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The revert was not successful for the selected product and it was not performed. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";DowngradeSuccessHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Revert Complete]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";DowngradeSuccessMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA['{0}' has been successfully reverted. Please close and restart all open instances of the below applications for changes to take effect.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorAllExtensionsAlreadyInstalled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The selected extensions are already installed to the specified SKU.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorAlreadyInstalled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension is already installed to all applicable products.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorAppidInstallPathNotFound" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[No product with AppidInstallPath {0} are installed: {1}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorCorruptInstance" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[VSIX Installer has encountered a problem. To troubleshoot, follow the steps here: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[{0} is an fwlink to a help page]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";ErrorExtensionSdkModificationCausingMultipleTargets" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Please schedule extension SDK modifications separately from other extensions.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorInstallMultipleExtensionsToMultipleSkus" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifications of multiple extensions can only be applied to one product at a time. To install or update extensions for a specific Visual Studio instance, use Extension Manager, or specify a target on the command line.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorInstanceIdNotFound" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[No product with instance id(s) {0} are installed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorMissingReferences" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension cannot be installed because the following references are missing:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorMultiTargetVSSDKExtensibilityMismatch" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Combining VSSDK and VisualStudio.Extensibility VSIX packages when targeting multiple instances is not supported. Either target a single instance using the command line, or install the different types of extensions as separate operations.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorNoModificationsCanBeApplied" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[No modifications could be applied.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorNonAdmin" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[You must have administrative privileges to install using the /admin switch.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorNotDowngradable" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[{0} cannot be reverted because it is not part of the catalog or it does not have a lower version in the catalog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ErrorSKUNotFound" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The application '{0}', version {1}, is not installed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExceptionMessageFormat" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Message: {0}]D;]A;StackTrace: {1}]D;]A;    ]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionIncompatibleWithSKU" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Extension "{0}" is incompatible with "{1}" and will not be installed on this Visual Studio instance.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionInvalidCertificate" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid Certificate]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionInvalidSignature" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid Signature]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionInvalidTimestamp" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid Timestamp]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionNoSignature" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[None]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionObsoleteCryptographicAlgorithm" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid Signature]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionPackInstallTitle" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following will be applied to all applicable products:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionSignedBy" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Digital Signature: ]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionUnSupportedCryptographicAlgorithm" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid Signature]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionsBlocked" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following extensions are not compatible with Visual Studio. Installation may cause Visual Studio to be unstable.]D;]A;    {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionsNotCompatible" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following extensions are not compatible with the selected version of Visual Studio. Installation may cause Visual Studio to be unstable.]D;]A;{0}]D;]A;Do you want to continue?]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ExtensionsNotCompatibleItem" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[- {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[This format is used to list items within a string e.g.:]D;]A;- Item 1]D;]A;- Item 2]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";FailedToDetermineInstallPath" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Failed to determine install target path.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";FileNotFound" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Path to vsix file '{0}' is invalid or you don't have required access permissions. Please check the path is valid and you have required access permissions.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";GeneralFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The operation was not successful for all the selected products. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";GlobalSku" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Global Location]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InitializingProgressBarText" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Initializing {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[{0} should be replaced with the name of the VSIX Installer process when used]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";InstallFailureHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install Failed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InstallFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The install of '{0}' was not successful for all the selected products. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InstallNoOpFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The install of '{0}' was not successful for all the selected products and it was not installed. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InstallSuccessHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install Complete]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InstallSuccessMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA['{0}' has been successfully installed. Please close and restart all target application instances for changes to take effect.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InvalidLicenseFormat" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The extension's license file is encoded in an invalid format.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InvalidLogfile" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA['{0}' is not an allowed filename. Generating logfile.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InvalidRootSuffix" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid rootSuffix value: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";InvalidVersionString" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Invalid version string: {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[{0} is user provided version string, intended to be similar to 15.0]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";LicenseDialogTitle" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[License]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_BeginningInstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Beginning to install extension to {0}...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_CancellingInstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Cancelling install...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_DowngradeSucceeded" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Successfully reverted {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_DowngradingExtension" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Reverting '{0}', version {1} to version {2}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[{0} is the extension to be reverted {1} is the version currently installed, {2} is the version that will be installed as a result of the revert]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";Log_ExtensionAlreadyInstalled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[An extension with a matching Identifier is already installed to this product.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionAlreadyInstalledSuccess" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[An extension with a matching Identifier is already installed to this product. The extension is installed to {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionDetailsHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Extension Details...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionIsNotExperimental" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The extension with ID '{0}' is not installable as it is not marked Experimental.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionNotInstalled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The extension with ID '{0}' is not installed to {1}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionPrerequisitesNotInstalled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following required prerequisites are not installed to {0}:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionUnsatisfiedPrerequisites" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Extension cannot be installed to the following products due to missing prerequisites:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_ExtensionUpgrade" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The extension will be upgraded from version {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_FoundInstalledProduct" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Found installed product - {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_InstallCancelled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install was cancelled.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_InstallError" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install Error : {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_InstallToProductSucceeded" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Install to {0} completed successfully. The extension has been installed to {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_Prerequisites" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Prerequisites]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_References" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[References]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_RevertingUninstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Reverting uninstall of version {0} of the extension.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_RollingBackInstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Rolling back install to {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_SearchForProducts" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Searching for applicable products...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_SelectedProducts" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The following target products have been selected...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_SignatureDetailsHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Signature Details...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_SupportedIsolatedShells" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Supported Isolated Shells]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_SupportedProducts" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Supported Products]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_UninstallSucceeded" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Successfully uninstalled {0}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_UninstallingExtension" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstalling '{0}', version {1}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_UnsupportedManifestFormat" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This VSIX manifest format is not supported.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Log_UpgradingExtension" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Upgrading '{0}', version {1} to version {2}.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";LoggerIOError" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Could not write to log file {0}. {1}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";LoggerLaunchError" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Could not launch an appropriate application to show install log. You can find the log in the following path: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ModifyFailureHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifications Failed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ModifyFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Some modifications could not be applied successfully. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ModifyNoOpFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Some modifications could not be applied successfully. Those modifications were not applied. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ModifySuccessHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifications Complete]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ModifySuccessMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Your modifications have been successfully applied. Please close and restart all target application instances for changes to take effect.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";MultipleChangeTitle" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Scheduled tasks for {0}:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";MultipleChangesMustTargetSingleInstance" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[For multiple installs/uninstalls it is only supported to make changes to a specific appid or instance either by specifying /appidInstallPath, /appName, /skuName and /skuVersion or by specifying a single instance id via /installIds.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";NoApplicableSKUsInstalled" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension is not installable on any currently installed products.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";NoSKUsContainExtension" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The extension with ID '{0}' is not installed to any currently installed products.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";NotApplicableExtensionUiMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension does not support this edition of Visual Studio.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";NotDowngradeableExtensionUiMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension cannot be reverted.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";NotInstallableExtensionSdkUiMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension SDK will not be installed. Please schedule extension SDK modifications separately from other extensions.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";NotInstalledExtensionUiMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension is not installed.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressComponentStatusDowngrade" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Reverting {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressComponentStatusDownload" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Downloading {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressComponentStatusDownloadComplete" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Download Complete]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressComponentStatusInstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installing {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressComponentStatusUninstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstalling {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressHeaderDowngrading" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Reverting {0}...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressHeaderInstalling" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installing {0}...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressHeaderModifying" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifying {0}...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressHeaderUninstalling" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstalling {0}...]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressOperationStatusDowngrade" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Reverting {0}:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressOperationStatusInstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Installing {0}:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressOperationStatusUninstall" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstalling {0}:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressProductStatus" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Modifying {0}:]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";ProgressRollingBack" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Rolling back changes]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";RevertUninstallFailed" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[RevertUninstall failed]D;]A;{0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";SetupInstanceNotLaunchable" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Found setup instance {0} but not in launchable state.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";SetupInstancePendingReboot" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Setup instance {0} requires a reboot. Reboot the machine and try again.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";SetupInstanceUnavailable" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Could not get Setup Instance for path: {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";SkuNameNotSpecified" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[/skuName not specified. When /appidInstallPath is specified you must also specify /appidName, /skuName and /skuVersion.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[/skuName, /appidInstallPath, /appidName and /skuVersion are the names of arguments given to the program.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";SkuVersionNotSpecified" ItemType="0" PsrId="211" InstFlg="true" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[/skuVersion not specified. When /appidInstallPath is specified you must also specify /appidName, /skuName and /skuVersion.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+        <Cmts>
+          <Cmt Name="RCCX"><![CDATA[/skuVersion, /appidInstallPath, /appidName and /skuskuName are the names of arguments given to the program.]]></Cmt>
+        </Cmts>
+      </Item>
+      <Item ItemId=";UnableToDetermineAction" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Unable to determine action. You must specify a path to a VSIX to install or the /uninstall command line argument.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UninstallFailureHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstall Failed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UninstallFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The uninstall of '{0}' was not successful for the selected product. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UninstallNoOpFailureMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The uninstall of '{0}' was not successful for the selected product and it was not uninstalled. For more information, click on the install log link at the bottom of the dialog.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UninstallSuccessHeader" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Uninstall Complete]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UninstallSuccessMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA['{0}' has been successfully uninstalled. Please close and restart all open instances of the below applications for changes to take effect.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UnresolvedReferenceDoesNotExist" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The prerequisite specified does not exist]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UnresolvedReferenceInvalidVersion" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The prerequisite version specified is invalid]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UnresolvedReferenceVersionDoesNotMatch" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[The prerequisite version specified does not match the version installed]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UnsatisfiedExtensionUiMessage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[This extension contains prerequisites that could not be found.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";UpdatingConfiguration" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Updating configuration for {0}]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";Usage" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[Usage: VSIXInstaller.exe [/quiet]5D; [/norepair]5D; [/admin]5D; [/prerequisitesRequired]5D; [/force]5D; [/instanceIds:instanceIds]5D; [/appIdInstallPath:Path to installed SKU]5D; [/appIdName:Name of target install]5D; [/skuName:name /skuVersion:version]5D; [/logFile:filename]5D; </uninstall:vsixID | /downgrade:vsixID | vsix_path>]D;]A;]D;]A;    - OPTIONS -]D;]A;]D;]A;/quiet]D;]A;Suppresses the UI. Short form is '/q'.]D;]A;]D;]A;/norepair]D;]A;Disables repair support of VSIX Installer and forces the VSIX Installer to fail when the extension is already installed. Short form is '/nr'.]D;]A;]D;]A;/admin]D;]A;The extension will be installed to the admin extensions location. Short form is '/a'.]D;]A;]D;]A;/prerequisitesRequired]D;]A;Installs the extension only to instances where ALL prerequisites are met. Short form is '/p'.]D;]A;]D;]A;/force]D;]A;Allows files to be overwritten. This is only available for the installation of a 'per-machine' extension. Short form is '/f'.]D;]A;]D;]A;/shutdownprocesses]D;]A;Force shutdown the blocking processes when UI is being suppressed. Short form is '/sp'.]D;]A;]D;]A;/noextensionpack]D;]A;Disables the unpacking of extension pack. Short form is '/noep'.]D;]A;]D;]A;/appIdInstallPath:<Path to installed SKU>]D;]A;The installation path of the SKU (product) you want to target for the install. If this option is specified then /appName, /skuName, and ]D;]A;/skuVersion must also be specified.]D;]A;]D;]A;/appIdName:<name>]D;]A;The name of the application to which to install or uninstall. e.g. VS, Blend, etc...]D;]A;]D;]A;/skuName:<name>]D;]A;The name of the SKU to which to install or uninstall the extension. Must be used with /skuVersion. Valid values include:]D;]A;- Enterprise - (Visual Studio Enterprise Edition)]D;]A;- Ultimate - (Visual Studio Ultimate Edition)]D;]A;- Premium - (Visual Studio Premium Edition)]D;]A;- Pro - (Visual Studio Professional Edition)]D;]A;- Community - (Visual Studio Community Edition)]D;]A;- IntegratedShell - (Visual Studio Shell - Integrated Mode)]D;]A;- VSWinExpress - (Visual Studio Express for Windows)]D;]A;- VSWinDesktopExpress - (Visual Studio Express for Windows Desktop)]D;]A;- VWDExpress - (Visual Studio Express for Web)]D;]A;Isolated Shell names may also be specified. Short form is '/s'.]D;]A;]D;]A;/skuVersion:<version>]D;]A;The version of the application to which to install or uninstall the extension, in the form major.minor[.build[.revision]5D;]5D;. Must be used with /skuName. Short form is '/v'.]D;]A;]D;]A;/logFile:<filename>]D;]A;Specifies the filename to be used for logging. This file will be appended to if it already exists. Logs will always be placed in %TEMP%. If this is not specified, or is invalid, a filename will be generated. Short forms are '/log' and '/l'.]D;]A;]D;]A;/uninstall:<vsixID>]D;]A;Uninstalls the extension with the specified identifier. If /skuName and /skuVersion are not specified, the extension will be uninstalled from all products that contain the extension with the corresponding identifier. Short form is '/u'.]D;]A;]D;]A;/instanceIds:<instanceId>]D;]A;A comma separated list of instance IDs into which the extension and its dependencies are installed or uninstalled. If no instance IDs are specified, the extension and its dependencies will be installed into or uninstalled from all instances.]D;]A;]D;]A;/downgrade:<vsixID>]D;]A;Reverts an in-product extension with the corresponding identifier to a previously installed version. Short form is '/d'.]D;]A;]D;]A;/rootSuffix:<root suffix>]D;]A;A root-suffix to be used for the install, e.g. Exp (for the experimental instance of the targeted install).]D;]A;]D;]A;/culture:<culture>]D;]A;A string identifying the culture which the VSIX installer should run under.]D;]A;]D;]A;    - ARGUMENTS -]D;]A;]D;]A;<vsix_path>]D;]A;Path to a valid .vsix file. This argument is invalid when /uninstall is specified.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+      <Item ItemId=";VSCodeExtensionSpecified" ItemType="0" PsrId="211" Leaf="true">
+        <Str Cat="Text">
+          <Val><![CDATA[One or more extensions are for Visual Studio Code. Try installing them in Visual Studio Code.]]></Val>
+        </Str>
+        <Disp Icon="Str" />
+      </Item>
+    </Item>
+    <Item ItemId=";error1" ItemType="0" PsrId="211" Leaf="true">
+      <Bin BinId="3">
+        <Val><![CDATA[AAEAAAD/////AQAAAAAAAAAEAQAAAAxTeXN0ZW0uSW50MzIBAAAAB21fdmFsdWUACAMAAAALAAEAAAD/////AQAAAAAAAAAGAQAAAAZlcnJvcjELAAEAAAD/////AQAAAAAAAAAEAQAAAB9TeXN0ZW0uVW5pdHlTZXJpYWxpemF0aW9uSG9sZGVyAwAAAAREYXRhCVVuaXR5VHlwZQxBc3NlbWJseU5hbWUBAAEIBgIAAAAcU3lzdGVtLlJlc291cmNlcy5SZXNYRmlsZVJlZgQAAAAGAwAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkLAAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAABxTeXN0ZW0uUmVzb3VyY2VzLlJlc1hGaWxlUmVmAwAAAAhmaWxlTmFtZQh0eXBlTmFtZRB0ZXh0RmlsZUVuY29kaW5nAQEDFFN5c3RlbS5UZXh0LkVuY29kaW5nAgAAAAYDAAAAD3ZpZXdzXGVycm9yLnBuZwYEAAAAaFN5c3RlbS5EcmF3aW5nLkJpdG1hcCwgU3lzdGVtLkRyYXdpbmcsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhCgsAAQAAAP////8BAAAAAAAAAAQBAAAADlN5c3RlbS5Cb29sZWFuAQAAAAdtX3ZhbHVlAAEACwABAAAA/////wEAAAAAAAAABAEAAAAOU3lzdGVtLkJvb2xlYW4BAAAAB21fdmFsdWUAAQAL]]></Val>
+      </Bin>
+      <Disp Edtr="External" LocTbl="false" />
+    </Item>
+    <Item ItemId=";success1" ItemType="0" PsrId="211" Leaf="true">
+      <Bin BinId="3">
+        <Val><![CDATA[AAEAAAD/////AQAAAAAAAAAEAQAAAAxTeXN0ZW0uSW50MzIBAAAAB21fdmFsdWUACAMAAAALAAEAAAD/////AQAAAAAAAAAGAQAAAAhzdWNjZXNzMQsAAQAAAP////8BAAAAAAAAAAQBAAAAH1N5c3RlbS5Vbml0eVNlcmlhbGl6YXRpb25Ib2xkZXIDAAAABERhdGEJVW5pdHlUeXBlDEFzc2VtYmx5TmFtZQEAAQgGAgAAABxTeXN0ZW0uUmVzb3VyY2VzLlJlc1hGaWxlUmVmBAAAAAYDAAAAV1N5c3RlbS5XaW5kb3dzLkZvcm1zLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQsAAQAAAP////8BAAAAAAAAAAwCAAAAV1N5c3RlbS5XaW5kb3dzLkZvcm1zLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAHFN5c3RlbS5SZXNvdXJjZXMuUmVzWEZpbGVSZWYDAAAACGZpbGVOYW1lCHR5cGVOYW1lEHRleHRGaWxlRW5jb2RpbmcBAQMUU3lzdGVtLlRleHQuRW5jb2RpbmcCAAAABgMAAAARdmlld3Ncc3VjY2Vzcy5wbmcGBAAAAGhTeXN0ZW0uRHJhd2luZy5CaXRtYXAsIFN5c3RlbS5EcmF3aW5nLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49YjAzZjVmN2YxMWQ1MGEzYQoLAAEAAAD/////AQAAAAAAAAAEAQAAAA5TeXN0ZW0uQm9vbGVhbgEAAAAHbV92YWx1ZQABAAsAAQAAAP////8BAAAAAAAAAAQBAAAADlN5c3RlbS5Cb29sZWFuAQAAAAdtX3ZhbHVlAAEACw==]]></Val>
+      </Bin>
+      <Disp Edtr="External" LocTbl="false" />
+    </Item>
+    <Item ItemId=";warning" ItemType="0" PsrId="211" Leaf="true">
+      <Bin BinId="3">
+        <Val><![CDATA[AAEAAAD/////AQAAAAAAAAAEAQAAAAxTeXN0ZW0uSW50MzIBAAAAB21fdmFsdWUACAMAAAALAAEAAAD/////AQAAAAAAAAAGAQAAAAd3YXJuaW5nCwABAAAA/////wEAAAAAAAAABAEAAAAfU3lzdGVtLlVuaXR5U2VyaWFsaXphdGlvbkhvbGRlcgMAAAAERGF0YQlVbml0eVR5cGUMQXNzZW1ibHlOYW1lAQABCAYCAAAAHFN5c3RlbS5SZXNvdXJjZXMuUmVzWEZpbGVSZWYEAAAABgMAAABXU3lzdGVtLldpbmRvd3MuRm9ybXMsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5CwABAAAA/////wEAAAAAAAAADAIAAABXU3lzdGVtLldpbmRvd3MuRm9ybXMsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAcU3lzdGVtLlJlc291cmNlcy5SZXNYRmlsZVJlZgMAAAAIZmlsZU5hbWUIdHlwZU5hbWUQdGV4dEZpbGVFbmNvZGluZwEBAxRTeXN0ZW0uVGV4dC5FbmNvZGluZwIAAAAGAwAAABFWaWV3c1x3YXJuaW5nLnBuZwYEAAAAaFN5c3RlbS5EcmF3aW5nLkJpdG1hcCwgU3lzdGVtLkRyYXdpbmcsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iMDNmNWY3ZjExZDUwYTNhCgsAAQAAAP////8BAAAAAAAAAAQBAAAADlN5c3RlbS5Cb29sZWFuAQAAAAdtX3ZhbHVlAAEACwABAAAA/////wEAAAAAAAAABAEAAAAOU3lzdGVtLkJvb2xlYW4BAAAAB21fdmFsdWUAAQAL]]></Val>
+      </Bin>
+      <Disp Edtr="External" LocTbl="false" />
+    </Item>
+  </Item>
+</LCX>

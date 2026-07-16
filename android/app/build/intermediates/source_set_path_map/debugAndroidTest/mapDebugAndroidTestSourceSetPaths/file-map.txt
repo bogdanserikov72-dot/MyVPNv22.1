@@ -1,0 +1,4 @@
+com.intourist.vpn.test.app-androidTest-0 D:\MyVPNv22.1\android\app\build\generated\res\resValues\androidTest\debug
+com.intourist.vpn.test.app-mergeDebugAndroidTestResources-1 D:\MyVPNv22.1\android\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.intourist.vpn.test.app-mergeDebugAndroidTestResources-2 D:\MyVPNv22.1\android\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.intourist.vpn.test.app-debugAndroidTest-3 D:\MyVPNv22.1\android\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

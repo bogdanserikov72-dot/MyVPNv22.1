@@ -1,0 +1,12 @@
+{
+    "controller" : {
+        "executable" : "C:/Program Files (x86)/Microsoft Visual Studio/Installer/resources/app/ServiceHub/Controller/Microsoft.ServiceHub.Controller.exe",
+        "args" : ["$PIPE"]
+    },
+    "services" : {
+        "rootDir" : "C:/Program Files (x86)/Microsoft Visual Studio/Installer/resources/app/ServiceHub/Services"
+    },
+    "hosts": {
+        "rootDir" : "C:/Program Files (x86)/Microsoft Visual Studio/Installer/resources/app/ServiceHub/Hosts"
+    }
+}

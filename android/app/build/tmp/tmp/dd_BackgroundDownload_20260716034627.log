@@ -1,0 +1,105 @@
+[5614:0001][2026-07-16T03:46:28] Creating new ExperimentationService
+[5614:0001][2026-07-16T03:46:28] Telemetry property VS.ABExp.Flights : lazytoolboxinit;fwlargebuffer;refactoring;spmoretempsbtn1;asloff;keybindgoldbarext;asynccsproj;vsfricheditor;completionapi;4f604693:30775293
+[5614:0004][2026-07-16T03:46:30] A Wmi provider at \\localhost\root\cimv2 is not registered.
+[5614:0004][2026-07-16T03:46:30] WmiValidatorResult: Success
+[5614:0004][2026-07-16T03:46:30] Telemetry property VS.SetupEngine.ActivityId : 87a894ef-00df-4a97-ae35-e7aaeb042dde
+[5614:0004][2026-07-16T03:46:30] Telemetry property VS.SetupEngine.IsChildProcess : False
+[5614:0004][2026-07-16T03:46:30] Telemetry property VS.SetupEngine.IsNoCancel : False
+[5614:0004][2026-07-16T03:46:30] Telemetry property VS.SetupEngine.HasFunctionalWmiProvider : Success
+[5614:0004][2026-07-16T03:46:30] BEGIN: Background Download
+[5614:0004][2026-07-16T03:46:30] Getting singleton lock. Mutex name: Global\VsSetupBackgroundDownloader
+[5614:0004][2026-07-16T03:46:30] Getting singleton lock succeed.
+[5614:0004][2026-07-16T03:46:30] Running pre-check verification.
+[5614:0004][2026-07-16T03:46:30] Precheck: Failure in checking if the drive exists: Значение не может быть неопределенным.
+Имя параметра: path
+[5614:0004][2026-07-16T03:46:30] BEGIN: Check for updates
+[5614:0004][2026-07-16T03:46:30] Telemetry property VS.SetupEngine.ChannelUpdateDisabled : False
+[5614:0008][2026-07-16T03:46:30] UserActivityMonitor started.
+[5614:0008][2026-07-16T03:46:30] Authentication Environment variable setting value: null
+[5614:0008][2026-07-16T03:46:30] Authenticate: True
+[5614:001b][2026-07-16T03:46:31] Download requested: https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/0da9c651656db35487ed012adeef60ed56334ec0ed6ecdf0c3c87101a721e970/VisualStudio.18.Release.chman
+[5614:0020][2026-07-16T03:46:31] Attempting download 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/0da9c651656db35487ed012adeef60ed56334ec0ed6ecdf0c3c87101a721e970/VisualStudio.18.Release.chman' using engine 'WebClient'
+[5614:001c][2026-07-16T03:46:31] Download requested: https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e091ca4b672aae0130e5a4195b2ba516ecdcbf9cf014540eda8a24002764cdf0/VisualStudio.17.Release.chman
+[5614:0021][2026-07-16T03:46:31] Attempting download 'https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e091ca4b672aae0130e5a4195b2ba516ecdcbf9cf014540eda8a24002764cdf0/VisualStudio.17.Release.chman' using engine 'WebClient'
+[5614:0020][2026-07-16T03:46:31] ManifestVerifier Result: Success
+[5614:0021][2026-07-16T03:46:31] ManifestVerifier Result: Success
+[5614:0020][2026-07-16T03:46:31] Download of 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/0da9c651656db35487ed012adeef60ed56334ec0ed6ecdf0c3c87101a721e970/VisualStudio.18.Release.chman' succeeded using engine 'WebClient'
+[5614:0021][2026-07-16T03:46:31] Download of 'https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e091ca4b672aae0130e5a4195b2ba516ecdcbf9cf014540eda8a24002764cdf0/VisualStudio.17.Release.chman' succeeded using engine 'WebClient'
+[5614:0008][2026-07-16T03:46:31] Загруженный канал C:\Users\Halo Wolf\AppData\Local\Microsoft\VisualStudio\Packages\_Channels\e24e2163\channelManifest.json более старый, чем существующий.
+[5614:0008][2026-07-16T03:46:31] Updated channel manifest: "https://aka.ms/vs/17/release/channel" to version 17.14.37502.11.
+[5614:0008][2026-07-16T03:46:31] Downloading installable manifest from "https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e9bc9ff80356003bee20271442344317675bff921b67c7c943ae39542706d065/VisualStudio.vsman" and using the channel URI "https://aka.ms/vs/17/release/channel".
+[5614:0008][2026-07-16T03:46:31] Download requested: https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e9bc9ff80356003bee20271442344317675bff921b67c7c943ae39542706d065/VisualStudio.vsman
+[5614:0020][2026-07-16T03:46:31] Attempting download 'https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e9bc9ff80356003bee20271442344317675bff921b67c7c943ae39542706d065/VisualStudio.vsman' using engine 'WebClient'
+[5614:0020][2026-07-16T03:46:33] ManifestVerifier Result: Success
+[5614:0020][2026-07-16T03:46:33] Download of 'https://download.visualstudio.microsoft.com/download/pr/12aa1305-dd17-4f26-8429-d072cda64c80/e9bc9ff80356003bee20271442344317675bff921b67c7c943ae39542706d065/VisualStudio.vsman' succeeded using engine 'WebClient'
+[5614:0020][2026-07-16T03:46:37] DependencyComparer was created without a productArch. productArch will be ignored for dependency comparison.
+[5614:0020][2026-07-16T03:46:39] No restart manager available. Assuming no reboot required for instance state.
+[5614:0020][2026-07-16T03:46:43] DependencyComparer was created without a productArch. productArch will be ignored for dependency comparison.
+[5614:0020][2026-07-16T03:46:46] No restart manager available. Assuming no reboot required for instance state.
+[5614:0020][2026-07-16T03:46:46] END: Check for updates
+[5614:0020][2026-07-16T03:46:46] BEGIN: Launch child and wait
+[5614:000a][2026-07-16T03:46:46] No bootstrapper cached previously: X:\tmp\VS\Setup\3b65be0a-98e9-4c4d-82b0-4d609c7ec059\vs_setup_bootstrapper.exe
+[5614:000a][2026-07-16T03:46:46] Downloading bootstrapper to cache: X:\tmp\VS\Setup\3b65be0a-98e9-4c4d-82b0-4d609c7ec059\vs_setup_bootstrapper.exe
+[5614:000a][2026-07-16T03:46:46] Creating temporary download cache: X:\tmp\c054d9f730e34975927e3169bc1367fb
+[5614:000a][2026-07-16T03:46:46] Downloading 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/f7c9abc9adda1cb272bb7e6cfa7ec4c8039dccbd2ecf2d38b9808a3832f54b3e/vs_Setup.exe' to 'X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_setup_bootstrapper.exe'
+[5614:000a][2026-07-16T03:46:46] Download requested: https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/f7c9abc9adda1cb272bb7e6cfa7ec4c8039dccbd2ecf2d38b9808a3832f54b3e/vs_Setup.exe
+[5614:0015][2026-07-16T03:46:46] Attempting download 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/f7c9abc9adda1cb272bb7e6cfa7ec4c8039dccbd2ecf2d38b9808a3832f54b3e/vs_Setup.exe' using engine 'WebClient'
+[5614:0015][2026-07-16T03:46:46] Authenticode verification returned 0x00000000 for path: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_setup_bootstrapper.exe.
+[5614:0015][2026-07-16T03:46:46] Download of 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/f7c9abc9adda1cb272bb7e6cfa7ec4c8039dccbd2ecf2d38b9808a3832f54b3e/vs_Setup.exe' succeeded using engine 'WebClient'
+[5614:0015][2026-07-16T03:46:46] Authenticode verification returned 0x00000000 for path: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_setup_bootstrapper.exe.
+[5614:0015][2026-07-16T03:46:46] Downloaded temporary bootstrapper from: https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/f7c9abc9adda1cb272bb7e6cfa7ec4c8039dccbd2ecf2d38b9808a3832f54b3e/vs_Setup.exe
+[5614:0015][2026-07-16T03:46:46] Verifying signature of tool "vs_setup_bootstrapper"
+[5614:0015][2026-07-16T03:46:46] Authenticode verification returned 0x00000000 for path: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_setup_bootstrapper.exe.
+[5614:0015][2026-07-16T03:46:48] Downloading 'https://aka.ms/vs/18/stable/installer' to 'X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_installer.opc'
+[5614:001b][2026-07-16T03:46:48] Download requested: https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/0540CA71F3FEFF1088B0271A6729CE5894785D37585ED06F5FB929FC1D4919DA/vs_installer.opc
+[5614:0021][2026-07-16T03:46:48] Attempting download 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/0540CA71F3FEFF1088B0271A6729CE5894785D37585ED06F5FB929FC1D4919DA/vs_installer.opc' using engine 'WebClient'
+[5614:0021][2026-07-16T03:46:55] Package signature verification returned Success for path: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_installer.opc
+[5614:0021][2026-07-16T03:46:55] Download of 'https://download.visualstudio.microsoft.com/download/pr/e05c0bc8-d058-4b2b-937c-1c80073d7633/0540CA71F3FEFF1088B0271A6729CE5894785D37585ED06F5FB929FC1D4919DA/vs_installer.opc' succeeded using engine 'WebClient'
+[5614:0021][2026-07-16T03:46:57] Package signature verification returned Success for path: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_installer.opc
+[5614:0021][2026-07-16T03:46:57] Downloaded Installer from: https://aka.ms/vs/18/stable/installer
+[5614:000e][2026-07-16T03:46:59] Package signature verification returned Success for path: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_installer.opc
+[5614:000e][2026-07-16T03:46:59] Extracting file 'vs_installer.version.json' from package stream.
+[5614:000e][2026-07-16T03:46:59] File found 'vs_installer.version.json' in package stream.
+[5614:000e][2026-07-16T03:46:59] Moving temporary bootstrapper files to: X:\tmp\VS\Setup\3b65be0a-98e9-4c4d-82b0-4d609c7ec059
+[5614:000e][2026-07-16T03:46:59] Caching bootstrapper information.
+[5614:000c][2026-07-16T03:46:59] Returning bootstrapper information.
+[5614:0020][2026-07-16T03:47:01] Package signature verification returned Success for path: X:\tmp\VS\Setup\3b65be0a-98e9-4c4d-82b0-4d609c7ec059\vs_installer.opc
+[5614:0020][2026-07-16T03:47:01] Extracting 'X:\tmp\VS\Setup\3b65be0a-98e9-4c4d-82b0-4d609c7ec059\vs_installer.opc' to 'X:\tmp\5ic4zf24.ctj'.
+[5614:000d][2026-07-16T03:47:02] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000e][2026-07-16T03:47:02] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0004][2026-07-16T03:47:03] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0005][2026-07-16T03:47:03] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0009][2026-07-16T03:47:04] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0010][2026-07-16T03:47:04] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0007][2026-07-16T03:47:05] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000f][2026-07-16T03:47:05] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000d][2026-07-16T03:47:06] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000e][2026-07-16T03:47:06] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0004][2026-07-16T03:47:07] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0005][2026-07-16T03:47:07] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0009][2026-07-16T03:47:08] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0010][2026-07-16T03:47:08] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0007][2026-07-16T03:47:09] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000f][2026-07-16T03:47:10] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000d][2026-07-16T03:47:10] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000b][2026-07-16T03:47:11] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0008][2026-07-16T03:47:11] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0005][2026-07-16T03:47:12] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0009][2026-07-16T03:47:12] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0010][2026-07-16T03:47:13] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0007][2026-07-16T03:47:13] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000f][2026-07-16T03:47:14] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000d][2026-07-16T03:47:14] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000e][2026-07-16T03:47:15] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0004][2026-07-16T03:47:15] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000c][2026-07-16T03:47:16] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:000d][2026-07-16T03:47:16] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0020][2026-07-16T03:47:16] Successfully extracted 'X:\tmp\5ic4zf24.ctj'.
+[5614:0020][2026-07-16T03:47:17] Child process started: X:\tmp\5ic4zf24.ctj\resources\app\ServiceHub\Services\Microsoft.VisualStudio.Setup.Service\BackgroundDownload.exe
+[5614:0020][2026-07-16T03:47:17] Waiting for setup process to complete...
+[5614:000b][2026-07-16T03:47:17] Warning: Received progress when there is no current instance. Skipping updating user profile state.
+[5614:0020][2026-07-16T03:48:29] Child process exited with code 0
+[5614:0020][2026-07-16T03:48:31] END: Launch child and wait
+[5614:0020][2026-07-16T03:48:31] END: Background Download
+[5614:0020][2026-07-16T03:48:31] Releasing singleton lock.
+[5614:0020][2026-07-16T03:48:31] Releasing singleton lock succeed.

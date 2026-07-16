@@ -1,0 +1,16 @@
+import org.gradle.util.GradleVersion
+initscript {
+    dependencies {
+        classpath files([mapPath('C:/Program Files/Android/Android Studio/plugins/android/lib/android-gradle.jar'), mapPath('C:/Program Files/Android/Android Studio/plugins/android/lib/android-gradle.jar'), mapPath('C:/Program Files/Android/Android Studio/lib/util-8.jar')])
+    }
+}
+if (GradleVersion.current() < GradleVersion.version("8.8")) {
+    allprojects {
+        apply plugin: com.android.ide.gradle.model.builder.AndroidStudioToolingPlugin
+    }
+} else {
+    lifecycle.beforeProject {
+        apply plugin: com.android.ide.gradle.model.builder.AndroidStudioToolingPlugin
+    }
+
+}

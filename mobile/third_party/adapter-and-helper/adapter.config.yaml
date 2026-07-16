@@ -1,0 +1,42 @@
+# Adapter — accepts streams from the bridge and forwards them to a local target.
+
+bridge:
+  url: "wss://YOUR_APIGW_ID.apigw.yandexcloud.net/_adapter"
+  authToken: "YOUR_AUTH_TOKEN"
+  reconnect:
+    initialDelayMs: 1000
+    maxDelayMs: 30000
+    backoffMultiplier: 2.0
+  # Periodic PING to refresh IAM token (PONG carries it) and keep the upstream WS
+  # alive against API Gateway idle timeout. Pings are gated on a known peer
+  # (skipped when no helper is connected), so an idle adapter stays cheap and
+  # lets the cloud function go cold; the function's HTTP /conn-ids poke wakes
+  # everything up on the next helper connect.
+  pingIntervalMs: 240000
+
+# Local service the adapter connects to for each incoming stream.
+target:
+  address: "127.0.0.1:1080"
+
+# HTTP endpoint the cloud function polls on cold start to recover connection
+# IDs. **Required** — without it the tunnel breaks as soon as the cloud
+# function instance recycles. The path is configurable so you don't have to
+# expose a recognisable URL like "/conn-ids" — pick something random of your
+# own and reflect the same value in the cloud function's HTTP_URL env var
+# (full URL: scheme://host:port + path).
+http:
+  listenPort: 8080
+  path: "/conn-ids"
+
+
+# Nagle-like write coalescing: buffer small TCP reads into larger DATA frames.
+# Reduces wsSend calls and improves throughput. Flush on delayMs timeout or 32KB.
+writeCoalescing:
+  enabled: true
+  delayMs: 50
+
+wsApi:
+  mode: "grpc"
+
+logging:
+  level: "info"

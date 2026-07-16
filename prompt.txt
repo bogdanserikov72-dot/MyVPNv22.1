@@ -1,0 +1,60 @@
+Привет! Мне нужна помощь в исправлении Android-версии моего VPN-приложения (кодовое название `MyVPN` / `Intourist VPN`). 
+
+### Суть проблемы
+Сейчас на Android не работает ни один режим подключения. Судя по логам и структуре проекта, Android-версия приложения (исходники находятся в папках `android`, `mobile` и `third_party`) не является self-contained (самодостаточной). Она пытается вести себя так же, как Windows-версия, и ожидает наличия внешних конфигурационных файлов, бинарников или системных путей, которых в изолированной песочнице Android просто нет.
+
+### Входные данные
+
+1. **Логи ошибок при попытке подключения на Android:**
+```text
+ [INFO] Connect button received by Android bridge.
+ [INFO] Connect requested (helper)
+ [INFO] Starting Intourist VPN (helper)
+ [INFO] TUN established (fd=284), handing off to core (mode=helper)
+ [INFO] starting helper mode
+ helper mode failed: bridge.url not found in config; expected helper.config.yaml bridge.url or equivalent
+ [ERROR] bridge.url not found in config; expected helper.config.yaml bridge.url or equivalent
+...
+ [INFO] Loading subscription...
+ [INFO] Loaded servers: 4
+ [INFO] Connect button received by Android bridge.
+ [INFO] Connect requested (sub)
+ [INFO] Starting Intourist VPN (sub)
+ [INFO] TUN established (fd=253), handing off to core (mode=sub)
+ [INFO] starting sub mode
+ [INFO] sub: parsing xray config
+ sub mode failed: parse xray config: core: Unable to load config
+ [ERROR] parse xray config: core: Unable to load config
+Архитектура Windows-версии (для понимания логики работы ядра):
+
+Режим Helper (полный туннель): Запускает helper.exe (клиент WebSocket-бриджа), который ищет настройки в bin/helper.config.yaml (включая bridge.url и authToken). Трафик заворачивается через tun2socks.exe в локальный SOCKS5 (127.0.0.1:1080).
+
+Режим Sub (xray-подписки): GUI генерирует JSON-конфиг на лету с помощью скрипта на Python (config_gen.py), сохраняет его в файл config.json в рабочей директории и запускает xray.exe run -c config.json.
+
+Анализ ошибок на Android
+В режиме helper:
+Происходит падение: bridge.url not found in config; expected helper.config.yaml bridge.url or equivalent.
+
+Почему: Мобильный Go-код (биндинг/библиотека ядра) пытается прочитать физический файл helper.config.yaml с диска по относительному пути или ожидает его в определенной директории, которой в Android нет, либо параметры не передаются напрямую через мост (Bridge) из Kotlin/Java-части в Go-ядро.
+
+В режиме sub:
+Происходит падение: sub mode failed: parse xray config: core: Unable to load config.
+
+Почему: Мобильное ядро пытается прочитать сгенерированный config.json (или config.yaml) из файловой системы устройства, но путь к нему либо невалиден (права доступа в Android), либо файл вообще не создается/не передается в Core в виде строки.
+
+Что нужно сделать:
+Проанализируй проблему и предложи конкретные изменения для Android-части проекта (директории android, mobile, third_party). Напиши архитектурно верное решение для следующих задач:
+
+Как сделать Android-версию self-contained?
+
+Как нам передавать конфигурацию для helper (bridge.url, token и т.д.) напрямую через вызовы Android-моста (JNI/GoMobile) без необходимости читать физический helper.config.yaml из ассетов или внутренней памяти?
+
+Как передавать xray-конфиг (JSON-строку) в режиме sub напрямую в память Go-ядра (например, через xray.StartInstance или аналогичные методы API мобильного SDK xray), избегая записи промежуточных файлов в файловую систему Android?
+
+Конкретные примеры кода:
+
+На стороне Go (мобильный биндинг, например, пакет mobile / main.go / gomobile): Как должна выглядеть функция инициализации, принимающая конфигурацию в виде строк (JSON/YAML) прямо из Android, вместо чтения файлов?
+
+На стороне Kotlin/Java (Android-приложение): Как правильно подготовить эти данные и передать их в Go-библиотеку при нажатии кнопки Connect для обоих режимов (helper и sub)?
+
+Пожалуйста, предложи пошаговый план изменений и напиши необходимый код для Go-биндинга и Android-части.

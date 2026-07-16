@@ -1,0 +1,9 @@
+[7/16/2026, 3:46:47] === Logging started: 2026/07/16 03:46:47 ===
+[7/16/2026, 3:46:47] Executable: X:\tmp\c054d9f730e34975927e3169bc1367fb\vs_setup_bootstrapper.exe v18.8.12009.203
+[7/16/2026, 3:46:47] --- logging level: standard ---
+[7/16/2026, 3:46:47] Directory 'X:\tmp\7555b1c91e104584bfdfac9aa9050c7c' has been selected for file extraction
+[7/16/2026, 3:46:47] Extracting files to: X:\tmp\7555b1c91e104584bfdfac9aa9050c7c
+[7/16/2026, 3:46:47] Extraction took 906 milliseconds
+[7/16/2026, 3:46:48] The entire Box execution exiting with result code: 0x0
+[7/16/2026, 3:46:48] Launched extracted application exiting with result code: 0x0
+[7/16/2026, 3:46:48] === Logging stopped: 2026/07/16 03:46:48 ===
