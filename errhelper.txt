@@ -1,0 +1,221 @@
+[03:26:48] [INFO] Connect button received by Android bridge.
+
+[03:26:48] [INFO] Connect requested (helper)
+
+[03:26:48] [INFO] Starting Intourist VPN (helper)
+
+[03:26:48] [INFO] TUN established (fd=300), handing off to core (mode=helper)
+
+[03:26:48] [INFO] starting helper mode
+
+[03:26:48] [INFO] helper: listening on 127.0.0.1:1080
+
+[03:26:48] [INFO] connecting to wss://d5domo185egeigartq0b.uvah0e6r.apigw.yandexcloud.net/_helper ...
+
+[03:26:48] [INFO] helper: tun2socks routing TUN -> 127.0.0.1:1080
+
+[03:26:48] [INFO] helper mode running
+
+[03:26:49] [INFO] WebSocket connected, sending HELLO...
+
+[03:26:49] [INFO] upstream authenticated ownID=c05188b1jdifd7gs7eav1ofc6u8h01sng peerID=c05188b1jdifd7gs91egubgn5rujk8e92
+
+[03:26:49] [INFO] upstream connected
+
+[03:26:49] [DEBUG] sent initial PING for fast discovery
+
+[03:26:49] [INFO] gRPC WS API client initialized: apigateway-connections.api.cloud.yandex.net:443
+
+[03:26:50] [INFO] cancelled 1 pending opens: new peer connected
+
+[03:26:55] [WARN] probe: FAILED after 3 attempts: empty response
+
+[03:27:19] [DEBUG] sending PING
+
+[03:27:20] [INFO] cancelled 8 pending opens: new peer connected
+
+[03:27:43] [DEBUG] TCP read ended stream=25, sending FIN
+
+[03:27:43] [DEBUG] closing stream=25
+
+[03:27:43] [DEBUG] FIN handling stream=25
+
+[03:27:49] [DEBUG] sending PING
+
+[03:27:50] [DEBUG] TCP read ended stream=2, sending FIN
+
+[03:27:50] [DEBUG] closing stream=2
+
+[03:27:50] [DEBUG] FIN handling stream=2
+
+[03:27:50] [INFO] cancelled 18 pending opens: new peer connected
+
+[03:27:51] [DEBUG] TCP read ended stream=3, sending FIN
+
+[03:27:51] [DEBUG] FIN handling stream=3
+
+[03:27:51] [DEBUG] closing stream=3
+
+[03:27:55] [DEBUG] TCP read ended stream=5, sending FIN
+
+[03:27:55] [DEBUG] TCP read ended stream=6, sending FIN
+
+[03:27:55] [DEBUG] closing stream=5
+
+[03:27:55] [DEBUG] FIN for unknown stream=5
+
+[03:27:55] [DEBUG] FIN handling stream=6
+
+[03:27:55] [DEBUG] closing stream=6
+
+[03:28:01] [DEBUG] TCP read ended stream=8, sending FIN
+
+[03:28:01] [DEBUG] TCP read ended stream=9, sending FIN
+
+[03:28:01] [DEBUG] closing stream=8
+
+[03:28:01] [DEBUG] closing stream=9
+
+[03:28:01] [DEBUG] FIN handling stream=8
+
+[03:28:01] [DEBUG] FIN for unknown stream=9
+
+[03:28:03] [DEBUG] TCP read ended stream=10, sending FIN
+
+[03:28:03] [DEBUG] closing stream=10
+
+[03:28:03] [DEBUG] FIN handling stream=10
+
+[03:28:12] [DEBUG] TCP read ended stream=11, sending FIN
+
+[03:28:12] [DEBUG] FIN handling stream=11
+
+[03:28:12] [DEBUG] closing stream=11
+
+[03:28:15] [DEBUG] TCP read ended stream=12, sending FIN
+
+[03:28:15] [DEBUG] closing stream=12
+
+[03:28:19] [DEBUG] sending PING
+
+[03:28:46] [DEBUG] TCP read ended stream=13, sending FIN
+
+[03:28:46] [DEBUG] closing stream=13
+
+[03:28:49] [DEBUG] TCP read ended stream=14, sending FIN
+
+[03:28:49] [DEBUG] closing stream=14
+
+[03:29:01] [DEBUG] TCP read ended stream=15, sending FIN
+
+[03:29:01] [DEBUG] closing stream=15
+
+[03:29:02] [DEBUG] TCP read ended stream=26, sending FIN
+
+[03:29:02] [DEBUG] closing stream=26
+
+[03:29:03] [DEBUG] TCP read ended stream=17, sending FIN
+
+[03:29:03] [DEBUG] TCP read ended stream=19, sending FIN
+
+[03:29:03] [DEBUG] TCP read ended stream=18, sending FIN
+
+[03:29:03] [DEBUG] closing stream=17
+
+[03:29:03] [DEBUG] TCP read ended stream=21, sending FIN
+
+[03:29:03] [DEBUG] TCP read ended stream=20, sending FIN
+
+[03:29:03] [DEBUG] TCP read ended stream=22, sending FIN
+
+[03:29:03] [DEBUG] TCP read ended stream=23, sending FIN
+
+[03:29:03] [DEBUG] TCP read ended stream=24, sending FIN
+
+[03:29:03] [DEBUG] closing stream=19
+
+[03:29:03] [DEBUG] closing stream=24
+
+[03:29:03] [DEBUG] closing stream=21
+
+[03:29:03] [DEBUG] closing stream=18
+
+[03:29:03] [DEBUG] closing stream=20
+
+[03:29:03] [DEBUG] closing stream=22
+
+[03:29:03] [DEBUG] closing stream=23
+
+[03:29:06] [DEBUG] TCP read ended stream=27, sending FIN
+
+[03:29:06] [DEBUG] closing stream=27
+
+[03:29:06] [DEBUG] TCP read ended stream=28, sending FIN
+
+[03:29:06] [DEBUG] closing stream=28
+
+[03:29:07] [DEBUG] sending PING
+
+[03:29:09] [DEBUG] TCP read ended stream=29, sending FIN
+
+[03:29:09] [DEBUG] TCP read ended stream=30, sending FIN
+
+[03:29:09] [DEBUG] TCP read ended stream=31, sending FIN
+
+[03:29:09] [DEBUG] closing stream=29
+
+[03:29:09] [DEBUG] closing stream=30
+
+[03:29:09] [DEBUG] closing stream=31
+
+[03:29:12] [DEBUG] TCP read ended stream=32, sending FIN
+
+[03:29:12] [DEBUG] closing stream=32
+
+[03:29:12] [DEBUG] TCP read ended stream=33, sending FIN
+
+[03:29:13] [DEBUG] closing stream=33
+
+[03:29:15] [DEBUG] TCP read ended stream=34, sending FIN
+
+[03:29:15] [DEBUG] closing stream=34
+
+[03:29:15] [DEBUG] TCP read ended stream=35, sending FIN
+
+[03:29:15] [DEBUG] TCP read ended stream=36, sending FIN
+
+[03:29:15] [DEBUG] closing stream=35
+
+[03:29:15] [DEBUG] closing stream=36
+
+[03:29:17] [DEBUG] TCP read ended stream=37, sending FIN
+
+[03:29:17] [DEBUG] closing stream=37
+
+[03:29:20] [DEBUG] TCP read ended stream=38, sending FIN
+
+[03:29:21] [DEBUG] closing stream=38
+
+[03:29:29] [DEBUG] TCP read ended stream=39, sending FIN
+
+[03:29:29] [DEBUG] closing stream=39
+
+[03:29:34] [DEBUG] TCP read ended stream=40, sending FIN
+
+[03:29:34] [DEBUG] closing stream=40
+
+[03:29:37] [DEBUG] sending PING
+
+[03:30:07] [DEBUG] sending PING
+
+[03:30:37] [DEBUG] sending PING
+
+[03:30:50] [INFO] cancelled 16 pending opens: new peer connected
+
+[03:31:11] [DEBUG] sending PING
+
+[03:31:14] [DEBUG] TCP read ended stream=16, sending FIN
+
+[03:31:14] [INFO] upstream shut down
+
+[03:31:15] [DEBUG] closing stream=16

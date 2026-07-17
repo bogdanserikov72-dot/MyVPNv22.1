@@ -14,6 +14,7 @@ import (
 	"context"
 	"fmt"
 	"sync"
+	"time"
 
 	"gopkg.in/yaml.v3"
 )
@@ -173,14 +174,40 @@ func start(mode, config string, tunFd int64, s LogSink, protector SocketProtecto
 	cancelRun = cancel
 	mu.Unlock()
 
-	s.OnLog(fmt.Sprintf("[INFO] starting %s mode", mode))
+	s.OnLog(fmt.Sprintf("[INFO] [STEP 1] starting %s mode core", mode))
 
 	var err error
 	switch mode {
 	case ModeSub:
+		// xray-core's inst.Start() (inside runSubMode) is synchronous — by
+		// the time it returns, the SOCKS/HTTP inbounds are already bound.
+		// That's the same guarantee Windows gets by running `xray.exe run`
+		// directly, so there's no separate readiness wait needed here,
+		// mirroring how the desktop GUI reports the sub connection as up
+		// immediately after xray.exe starts.
 		err = runSubMode(ctx, config, tunFd, s, protector)
+		if err == nil {
+			s.OnLog("[INFO] [STEP 2] xray-core started, SOCKS5/HTTP inbounds bound, tun2socks routing TUN")
+		}
 	default:
 		err = runHelperMode(ctx, config, tunFd, s, protector)
+		if err == nil {
+			s.OnLog("[INFO] [STEP 2] helper listener + tun2socks started")
+			// Mirrors myvpn.exe's [STEP 5] WaitForSOCKS5, which blocks up to
+			// 30s and fails the whole connection (log.Fatalf) rather than
+			// declaring success while helper.exe might not actually be
+			// reachable yet. Same idea here: don't tell Kotlin/the UI
+			// "connected" — and don't leave a half-up session running —
+			// until the bridge has actually authenticated.
+			s.OnLog("[INFO] [STEP 3] waiting for bridge to authenticate...")
+			if werr := waitHelperReady(ctx, 20*time.Second); werr != nil {
+				stopHelperMode()
+				cancel()
+				err = fmt.Errorf("bridge did not become ready: %w", werr)
+			} else {
+				s.OnLog("[INFO] [STEP 4] bridge authenticated, tunnel is live")
+			}
+		}
 	}
 
 	mu.Lock()

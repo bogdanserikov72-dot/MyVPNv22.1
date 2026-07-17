@@ -30,6 +30,18 @@ import (
 	_ "github.com/xtls/xray-core/app/proxyman/outbound"
 	_ "github.com/xtls/xray-core/app/router"
 
+	// xraycore.LoadConfig("json", ...) below looks up a ConfigLoader that was
+	// registered for the "json" format name via core.RegisterConfigLoader.
+	// That registration happens in this package's init(), NOT in xraycore
+	// itself — main/distro/all normally pulls it in transitively, but we
+	// excluded that import (see above), so without this line nothing ever
+	// registers a "json" loader and LoadConfig always fails with the generic
+	// "core: Unable to load config", regardless of whether the JSON is
+	// actually valid. This import is config-format-only; it does not touch
+	// wireguard/gvisor, so it's safe to add without reintroducing the
+	// conflict above.
+	_ "github.com/xtls/xray-core/infra/conf/serial"
+
 	_ "github.com/xtls/xray-core/proxy/blackhole"
 	_ "github.com/xtls/xray-core/proxy/freedom"
 	_ "github.com/xtls/xray-core/proxy/http"

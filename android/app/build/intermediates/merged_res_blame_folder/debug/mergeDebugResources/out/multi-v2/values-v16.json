@@ -4,7 +4,7 @@
             "outputFile": "com.intourist.vpn.app-mergeDebugResources-26:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Halo Wolf\\.gradle\\caches\\8.9\\transforms\\30aea0182b06da4b847967a4f9021238\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Halo Wolf\\.gradle\\caches\\8.10.2\\transforms\\0d4414dcc55631f089ddb079fc6c6600\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Halo Wolf\\.gradle\\caches\\8.9\\transforms\\323f543125e10b23f6985b16de81ddb8\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Halo Wolf\\.gradle\\caches\\8.10.2\\transforms\\bf099659d049483db5b0e8016b7a5861\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

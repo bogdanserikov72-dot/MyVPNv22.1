@@ -15,6 +15,8 @@ require (
 	github.com/cloudflare/circl v1.4.0 // indirect
 	github.com/dgryski/go-metro v0.0.0-20211217172704-adc40b04c140 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
+	github.com/francoispqt/gojay v1.2.13 // indirect
+	github.com/ghodss/yaml v1.0.1-0.20220118164431-d8423dcdf344 // indirect
 	github.com/go-chi/chi/v5 v5.3.0 // indirect
 	github.com/go-chi/cors v1.2.2 // indirect
 	github.com/go-chi/render v1.0.3 // indirect
@@ -28,13 +30,15 @@ require (
 	github.com/gorilla/websocket v1.5.3 // indirect
 	github.com/klauspost/compress v1.17.8 // indirect
 	github.com/klauspost/cpuid/v2 v2.2.7 // indirect
-	github.com/kr/pretty v0.1.0 // indirect
 	github.com/onsi/ginkgo/v2 v2.19.0 // indirect
+	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pires/go-proxyproto v0.7.0 // indirect
+	github.com/quic-go/qpack v0.4.0 // indirect
 	github.com/quic-go/quic-go v0.46.0 // indirect
 	github.com/refraction-networking/utls v1.6.7 // indirect
 	github.com/riobard/go-bloom v0.0.0-20200614022211-cdc8013cb5b3 // indirect
 	github.com/sagernet/sing v0.8.11 // indirect
+	github.com/sagernet/sing-shadowsocks v0.2.7 // indirect
 	github.com/seiflotfy/cuckoofilter v0.0.0-20240715131351-a2f2c23f1771 // indirect
 	github.com/v2fly/ss-bloomring v0.0.0-20210312155135-28617310f63e // indirect
 	github.com/xtls/reality v0.0.0-20240712055506-48f0b2d5ed6d // indirect
@@ -61,6 +65,7 @@ require (
 	google.golang.org/grpc v1.66.2 // indirect
 	google.golang.org/protobuf v1.34.2 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gvisor.dev/gvisor v0.0.0-20260701204157-69c2d17aea96 // indirect
 	lukechampine.com/blake3 v1.3.0 // indirect
 )
@@ -81,3 +86,5 @@ replace gvisor.dev/gvisor => gvisor.dev/gvisor v0.0.0-20250523182742-eede7a881b2
 replace github.com/bridge-to-freedom/adapter => ../third_party/adapter-and-helper
 
 tool golang.org/x/mobile/cmd/gobind
+
+replace github.com/xtls/xray-core => ./third_party/xray-core

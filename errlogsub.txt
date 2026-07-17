@@ -1,0 +1,19 @@
+[03:02:30] [INFO] Loading subscription...
+
+[03:02:31] [INFO] Loaded servers: 4
+
+[03:02:33] [INFO] Connect button received by Android bridge.
+
+[03:02:33] [INFO] Connect requested (sub)
+
+[03:02:34] [INFO] Starting Intourist VPN (sub)
+
+[03:02:34] [INFO] TUN established (fd=239), handing off to core (mode=sub)
+
+[03:02:34] [INFO] starting sub mode
+
+[03:02:34] [INFO] sub: parsing xray config
+
+[03:02:34] sub mode failed: parse xray config: core: Unable to load config
+
+[03:02:34] [ERROR] parse xray config: core: Unable to load config

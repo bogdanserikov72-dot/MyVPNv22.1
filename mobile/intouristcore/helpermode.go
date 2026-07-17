@@ -456,6 +456,40 @@ func stopHelperMode() {
 	stopHelperModeLocked()
 }
 
+// waitHelperReady blocks until the WSS upstream has an authenticated peer,
+// or until timeout/ctx cancellation. This is the Android equivalent of
+// myvpn.exe's [STEP 5] WaitForSOCKS5: on Windows, myvpn.exe doesn't declare
+// the connection "up" — and doesn't add the default route that sends real
+// traffic onto the TUN adapter — until it has confirmed helper.exe's SOCKS5
+// port actually accepts connections. Here, runHelperMode's local SOCKS5-ish
+// listener is a bound net.Listener the instant it starts (so a Windows-style
+// TCP dial-probe against it is a no-op, always instantly "ready"); the part
+// that can actually still be unready is the WSS session to the bridge, so
+// this checks that instead — same intent, adapted to what can really fail
+// on this side.
+func waitHelperReady(ctx context.Context, timeout time.Duration) error {
+	deadline := time.Now().Add(timeout)
+	ticker := time.NewTicker(200 * time.Millisecond)
+	defer ticker.Stop()
+
+	for {
+		helperMu.Lock()
+		ups := helperUps
+		helperMu.Unlock()
+		if ups != nil && ups.HasAnyPeer() {
+			return nil
+		}
+		if time.Now().After(deadline) {
+			return fmt.Errorf("timed out after %v waiting for bridge to authenticate a peer", timeout)
+		}
+		select {
+		case <-ctx.Done():
+			return ctx.Err()
+		case <-ticker.C:
+		}
+	}
+}
+
 func stopHelperModeLocked() {
 	if helperT2SStop != nil {
 		helperT2SStop()
