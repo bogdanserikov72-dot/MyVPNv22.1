@@ -1,8 +1,10 @@
 package intouristcore
 
 import (
+	"bufio"
 	"context"
 	"fmt"
+	"io"
 	"net"
 	"os"
 	"sync"
@@ -221,10 +223,18 @@ func runHelperMode(ctx context.Context, configYAML string, tunFd int64, s LogSin
 	return nil
 }
 
-// handleConn, waitForPeer, deliverProbeFrame, runProbe, tryProbeOnce below
-// are a near-verbatim port of cmd/helper/main.go, with log.Printf swapped
-// for s.OnLog/s.OnError so messages reach the Kotlin UI's log tab.
-
+// handleConn processes an inbound SOCKS5 connection from tun2socks.
+// This is the critical piece: tun2socks speaks RFC 1928 SOCKS5, and we must
+// parse that to extract the destination address before creating an upstream
+// stream to the bridge.
+//
+// Flow:
+// 1. Parse SOCKS5 greeting + CONNECT request from inbound conn
+// 2. Extract destination host:port
+// 3. Send SOCKS5 success response to client
+// 4. Send upstream OPEN frame with destination as payload
+// 5. Wait for OPEN_OK/OPEN_FAIL response
+// 6. Hand the now-established stream to sm.ReadLoop() for data forwarding
 func handleConn(ctx context.Context, s LogSink, conn net.Conn, ups *upstream.Upstream, sm *streams.Manager, pendingMu *sync.Mutex, pendingOpens map[uint32]chan protocol.Frame, relay bool) {
 	if tc, ok := conn.(*net.TCPConn); ok {
 		tc.SetNoDelay(true)
@@ -236,6 +246,26 @@ func handleConn(ctx context.Context, s LogSink, conn net.Conn, ups *upstream.Ups
 		return
 	}
 
+	// Parse SOCKS5 handshake (greeting + CONNECT request)
+	socksReq, err := parseSocks5Connect(conn)
+	if err != nil {
+		s.OnLog(fmt.Sprintf("[WARN] SOCKS5 parse error from %s: %v", conn.RemoteAddr(), err))
+		sendSocks5Error(conn, 1) // general SOCKS server failure
+		conn.Close()
+		return
+	}
+
+	// Send SOCKS5 success response. Format: [VER=5 | REP=0 | RSV=0 | ATYP | ADDR | PORT]
+	// We're proxying (not binding), so we return the original destination as BND.ADDR/BND.PORT.
+	resp := []byte{0x05, 0x00, 0x00} // VER=5, REP=success, RSV=0
+	resp = append(resp, socksReq.DestAddrBytes...)
+	if _, err := conn.Write(resp); err != nil {
+		s.OnLog(fmt.Sprintf("[WARN] SOCKS5 response write failed: %v", err))
+		conn.Close()
+		return
+	}
+
+	// Now create an upstream stream for this connection.
 	shortID := ups.HelperShortID()
 	localID := sm.NextID() & protocol.StreamLocalIDMask
 	sid := (uint32(shortID) << protocol.StreamHelperShortIDShift) | localID
@@ -252,7 +282,12 @@ func handleConn(ctx context.Context, s LogSink, conn net.Conn, ups *upstream.Ups
 		pendingMu.Unlock()
 	}()
 
-	if err := sm.SendFrame(protocol.Frame{Type: protocol.MsgOpen, StreamID: sid}); err != nil {
+	// Send OPEN frame with destination host:port as payload.
+	// The upstream (adapter/helper) will parse this and initiate the actual
+	// connection to the target server.
+	target := fmt.Sprintf("%s:%d", socksReq.DestHost, socksReq.DestPort)
+	openPayload := []byte(target)
+	if err := sm.SendFrame(protocol.Frame{Type: protocol.MsgOpen, StreamID: sid, Payload: openPayload}); err != nil {
 		conn.Close()
 		return
 	}
@@ -264,10 +299,12 @@ func handleConn(ctx context.Context, s LogSink, conn net.Conn, ups *upstream.Ups
 			return
 		}
 		if resp.Type == protocol.MsgOpenFail {
+			s.OnLog(fmt.Sprintf("[WARN] upstream rejected OPEN for %s: %v", target, string(resp.Payload)))
 			conn.Close()
 			return
 		}
 	case <-time.After(30 * time.Second):
+		s.OnLog(fmt.Sprintf("[WARN] OPEN_OK timeout for %s", target))
 		conn.Close()
 		return
 	case <-ctx.Done():
@@ -278,6 +315,154 @@ func handleConn(ctx context.Context, s LogSink, conn net.Conn, ups *upstream.Ups
 	sm.Register(str)
 	sm.ReadLoop(str)
 }
+
+// socks5Request holds parsed SOCKS5 CONNECT request information
+type socks5Request struct {
+	DestHost      string // resolved hostname or IP
+	DestPort      uint16 // destination port
+	DestAddrBytes []byte // raw SOCKS5 response address bytes (ATYP + ADDR + PORT)
+}
+
+// parseSocks5Connect parses an RFC 1928 SOCKS5 handshake from a connection.
+// It reads:
+// 1. Greeting: [VER=5 | NMETHODS | METHODS...]
+// 2. Request: [VER=5 | CMD=1 | RSV=0 | ATYP | DST.ADDR | DST.PORT]
+//
+// Returns a socks5Request with the destination or an error if the handshake
+// is invalid or doesn't request CONNECT (CMD=1).
+func parseSocks5Connect(conn net.Conn) (*socks5Request, error) {
+	br := bufio.NewReader(conn)
+
+	// ============ SOCKS5 Greeting ============
+	// Client sends: [VER | NMETHODS | METHODS...]
+	// VER = 5 (SOCKS5), NMETHODS = number of methods, METHODS = auth method IDs
+	ver := make([]byte, 2)
+	if _, err := io.ReadFull(br, ver); err != nil {
+		return nil, fmt.Errorf("read SOCKS5 greeting: %w", err)
+	}
+	if ver[0] != 0x05 {
+		return nil, fmt.Errorf("invalid SOCKS version: %d (expected 5)", ver[0])
+	}
+
+	nmethods := int(ver[1])
+	if nmethods < 1 || nmethods > 255 {
+		return nil, fmt.Errorf("invalid number of methods: %d", nmethods)
+	}
+
+	methods := make([]byte, nmethods)
+	if _, err := io.ReadFull(br, methods); err != nil {
+		return nil, fmt.Errorf("read SOCKS5 methods: %w", err)
+	}
+
+	// Server response: [VER=5 | METHOD=0 (no auth)]
+	if _, err := conn.Write([]byte{0x05, 0x00}); err != nil {
+		return nil, fmt.Errorf("write SOCKS5 greeting response: %w", err)
+	}
+
+	// ============ SOCKS5 Request ============
+	// Client sends: [VER | CMD | RSV | ATYP | DST.ADDR | DST.PORT]
+	// VER = 5, CMD = 1 (CONNECT), RSV = 0, ATYP = address type
+	req := make([]byte, 4)
+	if _, err := io.ReadFull(br, req); err != nil {
+		return nil, fmt.Errorf("read SOCKS5 request header: %w", err)
+	}
+	if req[0] != 0x05 {
+		return nil, fmt.Errorf("invalid SOCKS5 version in request: %d", req[0])
+	}
+
+	cmd := req[1]
+	if cmd != 0x01 { // 1 = CONNECT (only command we support)
+		// Send command not supported error (REP=7)
+		conn.Write([]byte{0x05, 0x07, 0x00, 0x01, 0, 0, 0, 0, 0, 0})
+		return nil, fmt.Errorf("unsupported SOCKS5 command: %d (only CONNECT=1 is supported)", cmd)
+	}
+
+	// req[2] is reserved (must be 0), req[3] is ATYP
+	atyp := req[3]
+
+	// Parse destination address based on type and build response address bytes
+	var host string
+	var port uint16
+	var addrResp []byte
+
+	switch atyp {
+	case 0x01: // IPv4 address: 4 bytes
+		ipv4 := make([]byte, 4)
+		if _, err := io.ReadFull(br, ipv4); err != nil {
+			return nil, fmt.Errorf("read IPv4 address: %w", err)
+		}
+		portBytes := make([]byte, 2)
+		if _, err := io.ReadFull(br, portBytes); err != nil {
+			return nil, fmt.Errorf("read port for IPv4: %w", err)
+		}
+		host = net.IPv4(ipv4[0], ipv4[1], ipv4[2], ipv4[3]).String()
+		port = uint16(portBytes[0])<<8 | uint16(portBytes[1])
+		addrResp = append([]byte{0x01}, ipv4...)
+		addrResp = append(addrResp, portBytes...)
+
+	case 0x03: // Domain name: 1-byte length + domain bytes
+		lenByte := make([]byte, 1)
+		if _, err := io.ReadFull(br, lenByte); err != nil {
+			return nil, fmt.Errorf("read domain name length: %w", err)
+		}
+		domainLen := int(lenByte[0])
+		if domainLen == 0 {
+			// Send address type not supported error (REP=8)
+			conn.Write([]byte{0x05, 0x08, 0x00, 0x01, 0, 0, 0, 0, 0, 0})
+			return nil, fmt.Errorf("empty domain name")
+		}
+		domainBytes := make([]byte, domainLen)
+		if _, err := io.ReadFull(br, domainBytes); err != nil {
+			return nil, fmt.Errorf("read domain name: %w", err)
+		}
+		portBytes := make([]byte, 2)
+		if _, err := io.ReadFull(br, portBytes); err != nil {
+			return nil, fmt.Errorf("read port for domain: %w", err)
+		}
+		host = string(domainBytes)
+		port = uint16(portBytes[0])<<8 | uint16(portBytes[1])
+		addrResp = append([]byte{0x03, byte(domainLen)}, domainBytes...)
+		addrResp = append(addrResp, portBytes...)
+
+	case 0x04: // IPv6 address: 16 bytes
+		ipv6 := make([]byte, 16)
+		if _, err := io.ReadFull(br, ipv6); err != nil {
+			return nil, fmt.Errorf("read IPv6 address: %w", err)
+		}
+		portBytes := make([]byte, 2)
+		if _, err := io.ReadFull(br, portBytes); err != nil {
+			return nil, fmt.Errorf("read port for IPv6: %w", err)
+		}
+		host = net.IP(ipv6).String()
+		port = uint16(portBytes[0])<<8 | uint16(portBytes[1])
+		addrResp = append([]byte{0x04}, ipv6...)
+		addrResp = append(addrResp, portBytes...)
+
+	default:
+		// Send address type not supported error (REP=8)
+		conn.Write([]byte{0x05, 0x08, 0x00, 0x01, 0, 0, 0, 0, 0, 0})
+		return nil, fmt.Errorf("unsupported SOCKS5 address type: %d", atyp)
+	}
+
+	return &socks5Request{
+		DestHost:      host,
+		DestPort:      port,
+		DestAddrBytes: addrResp,
+	}, nil
+}
+
+// sendSocks5Error sends a SOCKS5 error response.
+// errCode should be one of: 1=general failure, 2=conn not allowed, 3=network unreachable,
+// 4=host unreachable, 5=connection refused, 6=TTL expired, 7=command not supported, 8=address not supported
+func sendSocks5Error(conn net.Conn, errCode byte) {
+	// SOCKS5 error response: [VER=5 | REP | RSV=0 | ATYP=1 | ADDR=0.0.0.0 | PORT=0]
+	resp := []byte{0x05, errCode, 0x00, 0x01, 0, 0, 0, 0, 0, 0}
+	conn.Write(resp)
+}
+
+// handleConn, waitForPeer, deliverProbeFrame, runProbe, tryProbeOnce below
+// are a near-verbatim port of cmd/helper/main.go, with log.Printf swapped
+// for s.OnLog/s.OnError so messages reach the Kotlin UI's log tab.
 
 func waitForPeer(ctx context.Context, ups *upstream.Upstream, relay bool, timeout time.Duration) bool {
 	ready := func() bool {
