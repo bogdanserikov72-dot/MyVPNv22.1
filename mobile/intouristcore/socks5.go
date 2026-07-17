@@ -7,9 +7,13 @@ import (
 	"net"
 )
 
-// socks5Handler implements RFC 1928 SOCKS5 protocol wrapper.
+// handleSOCKS5Conn implements RFC 1928 SOCKS5 protocol wrapper.
 // It accepts a SOCKS5-speaking client, validates the handshake,
 // and then hands the authenticated socket to the stream handler.
+//
+// NOTE: This function is kept for reference but is not used in the current
+// implementation. The parseSocks5Connect function in helpermode.go is used instead
+// to integrate SOCKS5 parsing directly with stream management.
 func handleSOCKS5Conn(conn net.Conn, handleStream func(net.Conn) error) error {
 	defer conn.Close()
 	br := bufio.NewReader(conn)
@@ -117,6 +121,9 @@ func handleSOCKS5Conn(conn net.Conn, handleStream func(net.Conn) error) error {
 		conn.Write([]byte{5, 8, 0, 1, 0, 0, 0, 0, 0, 0})
 		return fmt.Errorf("unsupported SOCKS5 address type: %d", atyp)
 	}
+
+	_ = addr // addr and port are parsed but not used here; they're passed to handleStream via conn
+	_ = port
 
 	// ============ SOCKS5 Response ============
 	// Server sends: [VER | REP | RSV | ATYP | BND.ADDR | BND.PORT]
