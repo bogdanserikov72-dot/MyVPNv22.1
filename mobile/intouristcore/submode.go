@@ -37,9 +37,13 @@ import (
 	// excluded that import (see above), so without this line nothing ever
 	// registers a "json" loader and LoadConfig always fails with the generic
 	// "core: Unable to load config", regardless of whether the JSON is
-	// actually valid. This import is config-format-only; it does not touch
-	// wireguard/gvisor, so it's safe to add without reintroducing the
-	// conflict above.
+	// actually valid.
+	//
+	// These imports ensure the JSON loader and config infrastructure are
+	// registered. The conf package has the config structures and marshaling,
+	// serial has the JSON loader registration, and we import both to ensure
+	// all related init() functions run.
+	_ "github.com/xtls/xray-core/infra/conf"
 	_ "github.com/xtls/xray-core/infra/conf/serial"
 
 	_ "github.com/xtls/xray-core/proxy/blackhole"
