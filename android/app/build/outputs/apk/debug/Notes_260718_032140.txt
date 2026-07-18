@@ -1,0 +1,133 @@
+[03:19:13] [INFO] Connect button received by Android bridge.
+
+[03:19:13] [INFO] Connect requested (helper)
+
+[03:19:13] [INFO] Starting Intourist VPN (helper)
+
+[03:19:13] [INFO] TUN established (fd=260), handing off to core (mode=helper)
+
+[03:19:13] [INFO] [STEP 1] starting helper mode core
+
+[03:19:13] [INFO] helper: listening on 127.0.0.1:1080
+
+[03:19:13] [INFO] connecting to wss://d5domo185egeigartq0b.uvah0e6r.apigw.yandexcloud.net/_helper ...
+
+[03:19:13] [INFO] helper: tun2socks routing TUN -> 127.0.0.1:1080
+
+[03:19:13] [INFO] [STEP 2] helper listener + tun2socks started
+
+[03:19:13] [INFO] [STEP 3] waiting for bridge to authenticate...
+
+[03:19:15] [INFO] WebSocket connected, sending HELLO...
+
+[03:19:15] [INFO] upstream authenticated ownID=c05188b1jdifd7gsmel1mju3flq243tgb peerID=c057grqrcnd799gdkpjc4b6ngqmvcrke2
+
+[03:19:15] [INFO] upstream connected
+
+[03:19:15] [DEBUG] sent initial PING for fast discovery
+
+[03:19:15] [INFO] gRPC WS API client initialized: apigateway-connections.api.cloud.yandex.net:443
+
+[03:19:15] [WARN] SOCKS5 parse error from 127.0.0.1:56686: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:15] [WARN] SOCKS5 parse error from 127.0.0.1:56646: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:15] [WARN] SOCKS5 parse error from 127.0.0.1:56672: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:15] [WARN] SOCKS5 parse error from 127.0.0.1:56696: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:15] [WARN] SOCKS5 parse error from 127.0.0.1:56656: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:15] [INFO] [STEP 4] bridge authenticated, tunnel is live
+
+[03:19:15] [INFO] helper mode running
+
+[03:19:15] [WARN] SOCKS5 parse error from 127.0.0.1:56666: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:15] [DEBUG] FIN handling stream=2
+
+[03:19:15] [DEBUG] TCP read ended stream=2, sending FIN
+
+[03:19:16] [DEBUG] closing stream=2
+
+[03:19:17] [WARN] SOCKS5 parse error from 127.0.0.1:53812: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:17] [WARN] SOCKS5 parse error from 127.0.0.1:53826: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:17] [WARN] SOCKS5 parse error from 127.0.0.1:53836: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:17] [WARN] SOCKS5 parse error from 127.0.0.1:53852: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:17] [WARN] SOCKS5 parse error from 127.0.0.1:53866: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:18] [WARN] SOCKS5 parse error from 127.0.0.1:53872: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:21] [WARN] SOCKS5 parse error from 127.0.0.1:53884: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:22] [WARN] probe: FAILED after 3 attempts: empty response
+
+[03:19:22] [WARN] SOCKS5 parse error from 127.0.0.1:53896: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:22] [WARN] SOCKS5 parse error from 127.0.0.1:53908: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:23] [WARN] SOCKS5 parse error from 127.0.0.1:53918: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:24] [WARN] SOCKS5 parse error from 127.0.0.1:53932: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:25] [WARN] SOCKS5 parse error from 127.0.0.1:53946: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:26] [WARN] SOCKS5 parse error from 127.0.0.1:53956: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:26] [WARN] SOCKS5 parse error from 127.0.0.1:33038: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:29] [WARN] SOCKS5 parse error from 127.0.0.1:33054: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:29] [WARN] SOCKS5 parse error from 127.0.0.1:33070: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:29] [WARN] SOCKS5 parse error from 127.0.0.1:33072: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:31] [WARN] SOCKS5 parse error from 127.0.0.1:33088: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:32] [WARN] SOCKS5 parse error from 127.0.0.1:33096: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:32] [WARN] SOCKS5 parse error from 127.0.0.1:33112: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:35] [WARN] SOCKS5 parse error from 127.0.0.1:33114: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:37] [WARN] SOCKS5 parse error from 127.0.0.1:53224: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:37] [WARN] SOCKS5 parse error from 127.0.0.1:53236: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:40] [WARN] SOCKS5 parse error from 127.0.0.1:53250: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:40] [WARN] SOCKS5 parse error from 127.0.0.1:53260: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:41] [INFO] Disconnected.
+
+[03:19:44] [WARN] SOCKS5 parse error from 127.0.0.1:53266: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:45] [WARN] SOCKS5 parse error from 127.0.0.1:53280: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:45] [DEBUG] sending PING
+
+[03:19:47] [WARN] SOCKS5 parse error from 127.0.0.1:36462: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:47] [WARN] SOCKS5 parse error from 127.0.0.1:36472: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:50] [WARN] SOCKS5 parse error from 127.0.0.1:36488: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:52] [WARN] SOCKS5 parse error from 127.0.0.1:36494: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:52] [WARN] SOCKS5 parse error from 127.0.0.1:36506: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:53] [WARN] SOCKS5 parse error from 127.0.0.1:36520: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:55] [WARN] SOCKS5 parse error from 127.0.0.1:36528: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:55] [WARN] SOCKS5 parse error from 127.0.0.1:36542: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:56] [WARN] SOCKS5 parse error from 127.0.0.1:36558: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:59] [WARN] SOCKS5 parse error from 127.0.0.1:42870: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
+
+[03:19:59] [WARN] SOCKS5 parse error from 127.0.0.1:42884: unsupported SOCKS5 command: 3 (only CONNECT=1 is supported)
