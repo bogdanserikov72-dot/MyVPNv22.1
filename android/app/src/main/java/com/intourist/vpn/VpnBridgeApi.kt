@@ -127,7 +127,24 @@ class VpnBridgeApi(
         Log.i(TAG, "disconnect() called from JS bridge")
         startInFlight.set(false)
         connected.set(false)
-        main.post { activity.stopService(IntouristVpnService.stopIntent(activity)) }
+        // BUG FIX: this used to call activity.stopService(IntouristVpnService.stopIntent(activity)).
+        // Context.stopService(Intent) does NOT deliver the Intent to onStartCommand() — it only
+        // uses it to identify *which component* to stop by class, then (if the service isn't
+        // bound) schedules onDestroy() directly. The ACTION_STOP extra was therefore never seen
+        // by onStartCommand()'s `when (intent.action) { ACTION_STOP -> stopVpn() ... }` branch —
+        // that whole branch, and stopIntent(), were dead code. This is exactly what logcaterr.txt
+        // showed: after "disconnect() called from JS bridge" there was no "Stopping VPN" line, no
+        // Intouristcore.stop() call, ever — the SOCKS5 spam and the upstream's PING kept running
+        // completely undisturbed. Routing the same ACTION_STOP intent through
+        // startForegroundService (the same API connect() already uses to reach onStartCommand)
+        // makes it actually arrive, hit the ACTION_STOP branch, and call stopVpn().
+        main.post {
+            runCatching {
+                ContextCompat.startForegroundService(activity, IntouristVpnService.stopIntent(activity))
+            }.onFailure {
+                Log.e(TAG, "disconnect(): startForegroundService(stopIntent) threw", it)
+            }
+        }
         emit("statusChanged", false)
         emit("modeChanged", "")
         emit("logMessage", "[INFO] Disconnected.")
