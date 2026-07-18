@@ -1,4 +1,4 @@
-#Fri Jul 17 04:44:59 MSK 2026
+#Sat Jul 18 03:12:33 MSK 2026
 base.0=D\:\\MyVPNv22.1\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=D\:\\MyVPNv22.1\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=D\:\\MyVPNv22.1\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\9\\classes.dex
